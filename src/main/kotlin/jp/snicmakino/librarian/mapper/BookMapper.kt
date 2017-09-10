@@ -11,6 +11,14 @@ interface BookMapper {
 
     @Select("""
         SELECT
+            *
+        FROM
+            book
+    """)
+    fun all(): MutableList<Book>
+
+    @Select("""
+        SELECT
             id, title, stock
         FROM
             book

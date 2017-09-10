@@ -9,12 +9,11 @@ import jp.snicmakino.librarian.model.Book
 class BookController(val bookMapper: BookMapper) {
 
     @GetMapping
-    fun index(): String {
-        return "get"
+    fun index(): MutableList<Book> {
+        return bookMapper.all()
     }
 
     @GetMapping("/{id}")
-    @ResponseBody
     fun show(@PathVariable id: Int): Book {
         return bookMapper.find(id)
     }
