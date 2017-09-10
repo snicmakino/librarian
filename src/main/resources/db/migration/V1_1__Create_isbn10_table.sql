@@ -1,0 +1,5 @@
+CREATE TABLE isbn10
+(
+  book_id INTEGER NOT NULL REFERENCES book(id),
+  isbn    VARCHAR(255) NOT NULL
+);
