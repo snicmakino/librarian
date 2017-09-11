@@ -30,8 +30,13 @@ class BookController(val bookMapper: BookMapper) {
     }
 
     @PutMapping("/{id}")
-    fun update(): String {
-        return "update"
+    @Transactional
+    fun update(@PathVariable("id") id: Int, @RequestBody @Valid book: Book): Book {
+        book.id = id
+        bookMapper.update(book)
+        if (book.isbn10.isbn != null) { bookMapper.updateIsbn10(book) }
+        if (book.isbn13.isbn != null) { bookMapper.updateIsbn13(book) }
+        return bookMapper.find(id)
     }
 
     @DeleteMapping("/{id}")

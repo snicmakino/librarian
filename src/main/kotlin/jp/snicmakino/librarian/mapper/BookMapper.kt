@@ -54,6 +54,18 @@ interface BookMapper {
     """)
     fun registerIsbn10(book: Book)
 
+    @Update("""
+        <script>
+            UPDATE book
+            <set>
+                <if test="title != null">title = #{title},</if>
+                <if test="stock != null">stock = #{stock},</if>
+            </set>
+            WHERE id = #{id}
+        </script>
+    """)
+    fun update(book: Book)
+
     @Insert("""
         INSERT INTO isbn13
             (book_id, isbn)
@@ -61,4 +73,18 @@ interface BookMapper {
             (#{id}, #{isbn13.isbn})
     """)
     fun registerIsbn13(book: Book)
+
+    @Update("""
+        update isbn10
+        set isbn = #{isbn10.isbn}
+        where book_id = #{id}
+    """)
+    fun updateIsbn10(book: Book)
+
+    @Update("""
+        update isbn13
+        set isbn = #{isbn13.isbn}
+        where book_id = #{id}
+    """)
+    fun updateIsbn13(book: Book)
 }

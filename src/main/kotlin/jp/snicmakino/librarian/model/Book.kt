@@ -10,11 +10,11 @@ class Book {
     var id: Int = 0
 
     @NotEmpty
-    var title: String = ""
+    var title: String? = null
 
     @Min(0)
     @Max(9999)
-    var stock: Int = 0
+    var stock: Int? = null
 
     @JsonUnwrapped
     @Valid
