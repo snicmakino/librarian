@@ -1,8 +1,10 @@
 package jp.snicmakino.librarian.controller
 
 import jp.snicmakino.librarian.mapper.BookMapper
-import org.springframework.web.bind.annotation.*
 import jp.snicmakino.librarian.model.Book
+import org.springframework.transaction.annotation.Transactional
+import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/books")
@@ -19,8 +21,12 @@ class BookController(val bookMapper: BookMapper) {
     }
 
     @PostMapping
-    fun store(): String {
-        return "post"
+    @Transactional
+    fun store(@RequestBody @Valid book: Book): Book {
+        bookMapper.register(book)
+        if (book.isbn10.isbn != null) { bookMapper.registerIsbn10(book) }
+        if (book.isbn13.isbn != null) { bookMapper.registerIsbn13(book) }
+        return book
     }
 
     @PutMapping("/{id}")

@@ -45,4 +45,20 @@ interface BookMapper {
     """)
     @Options(useGeneratedKeys = true)
     fun register(book: Book)
+
+    @Insert("""
+        INSERT INTO isbn10
+            (book_id, isbn)
+        VALUES
+            (#{id}, #{isbn10.isbn})
+    """)
+    fun registerIsbn10(book: Book)
+
+    @Insert("""
+        INSERT INTO isbn13
+            (book_id, isbn)
+        VALUES
+            (#{id}, #{isbn13.isbn})
+    """)
+    fun registerIsbn13(book: Book)
 }
