@@ -87,4 +87,9 @@ interface BookMapper {
         where book_id = #{id}
     """)
     fun updateIsbn13(book: Book)
+
+    @Delete("""
+        DELETE FROM book WHERE id = #{id}
+    """)
+    fun delete(id: Int): Boolean
 }

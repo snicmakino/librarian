@@ -40,7 +40,7 @@ class BookController(val bookMapper: BookMapper) {
     }
 
     @DeleteMapping("/{id}")
-    fun delete(): String {
-        return "delete"
+    fun delete(@PathVariable("id") id: Int): String {
+        return bookMapper.delete(id).toString()
     }
 }
