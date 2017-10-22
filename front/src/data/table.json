@@ -1,0 +1,42 @@
+[
+  {
+    "id":1,
+    "title":"増補改訂版Java言語で学ぶデザインパターン入門",
+    "stock":1,
+    "link":"https://www.amazon.co.jp/%E5%A2%97%E8%A3%9C%E6%94%B9%E8%A8%82%E7%89%88Java%E8%A8%80%E8%AA%9E%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E5%85%A5%E9%96%80-%E7%B5%90%E5%9F%8E-%E6%B5%A9/dp/4797327030/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&psc=1&refRID=TDSV78NSYZJW3E17HMY9",
+    "isbn10": "4797327030",
+    "isbn13": "978-4797327038"
+  },
+  {
+    "id":2,
+    "title":"増補改訂版Java言語で学ぶデザインパターン入門",
+    "stock":1,
+    "link":"https://www.amazon.co.jp/%E5%A2%97%E8%A3%9C%E6%94%B9%E8%A8%82%E7%89%88Java%E8%A8%80%E8%AA%9E%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E5%85%A5%E9%96%80-%E7%B5%90%E5%9F%8E-%E6%B5%A9/dp/4797327030/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&psc=1&refRID=TDSV78NSYZJW3E17HMY9",
+    "isbn10": "4797327030",
+    "isbn13": "978-4797327038"
+  },
+  {
+    "id":3,
+    "title":"増補改訂版Java言語で学ぶデザインパターン入門",
+    "stock":1,
+    "link":"https://www.amazon.co.jp/%E5%A2%97%E8%A3%9C%E6%94%B9%E8%A8%82%E7%89%88Java%E8%A8%80%E8%AA%9E%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E5%85%A5%E9%96%80-%E7%B5%90%E5%9F%8E-%E6%B5%A9/dp/4797327030/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&psc=1&refRID=TDSV78NSYZJW3E17HMY9",
+    "isbn10": "4797327030",
+    "isbn13": "978-4797327038"
+  },
+  {
+    "id":4,
+    "title":"増補改訂版Java言語で学ぶデザインパターン入門",
+    "stock":1,
+    "link":"https://www.amazon.co.jp/%E5%A2%97%E8%A3%9C%E6%94%B9%E8%A8%82%E7%89%88Java%E8%A8%80%E8%AA%9E%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E5%85%A5%E9%96%80-%E7%B5%90%E5%9F%8E-%E6%B5%A9/dp/4797327030/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&psc=1&refRID=TDSV78NSYZJW3E17HMY9",
+    "isbn10": "4797327030",
+    "isbn13": "978-4797327038"
+  },
+  {
+    "id":5,
+    "title":"増補改訂版Java言語で学ぶデザインパターン入門",
+    "stock":1,
+    "link":"https://www.amazon.co.jp/%E5%A2%97%E8%A3%9C%E6%94%B9%E8%A8%82%E7%89%88Java%E8%A8%80%E8%AA%9E%E3%81%A7%E5%AD%A6%E3%81%B6%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E5%85%A5%E9%96%80-%E7%B5%90%E5%9F%8E-%E6%B5%A9/dp/4797327030/ref=pd_lpo_sbs_14_t_0?_encoding=UTF8&psc=1&refRID=TDSV78NSYZJW3E17HMY9",
+    "isbn10": "4797327030",
+    "isbn13": "978-4797327038"
+  }
+]

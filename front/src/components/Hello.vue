@@ -27,7 +27,7 @@
 
       <q-list no-border link inset-delimiter>
         <q-list-header>Menu</q-list-header>
-        <q-item @click="launch('http://quasar-framework.org')">
+        <q-item @click="move('/books')">
           <q-item-side icon="book" />
           <q-item-main label="Books" sublabel="Manage Book Collection" />
         </q-item>
@@ -39,10 +39,45 @@
       <router-view /> component
       if using subRoutes
     -->
-    <div class="layout-padding logo-container non-selectable no-pointer-events">
-      <div class="logo" :style="position">
-        <img src="~assets/quasar-logo-full.svg">
-      </div>
+    <div class="layout-padding">
+      <table class="q-table striped-odd loose">
+        <thead>
+        <tr>
+          <th class="text-center">Title</th>
+          <th class="text-center">In Stock</th>
+          <th class="text-center">Link</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="text-left">Effective Debugging ―ソフトウェアとシステムをデバッグする66項目</td>
+          <td class="text-right">1</td>
+          <td class="text-center">
+            <q-btn color="orange-6">
+              Amazon
+            </q-btn>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left">テスト駆動開発</td>
+          <td class="text-right">1</td>
+          <td class="text-center">
+            <q-btn color="orange-6">
+              Amazon
+            </q-btn>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left">リーダブルコード ―より良いコードを書くためのシンプルで実践的なテクニック (Theory in practice)</td>
+          <td class="text-right">2</td>
+          <td class="text-center">
+            <q-btn color="orange-6">
+              Amazon
+            </q-btn>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </q-layout>
 </template>
@@ -207,3 +242,4 @@ export default {
   position absolute
   transform-style preserve-3d
 </style>
+

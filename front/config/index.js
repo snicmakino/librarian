@@ -32,7 +32,7 @@ module.exports = {
     // auto open browser or not
     openBrowser: true,
     publicPath: '/',
-    port: 8080,
+    port: 8000,
 
     // If for example you are using Quasar Play
     // to generate a QR code then on each dev (re)compilation
@@ -44,7 +44,12 @@ module.exports = {
     // Proxy your API if using any.
     // Also see /build/script.dev.js and search for "proxy api requests"
     // https://github.com/chimurai/http-proxy-middleware
-    proxyTable: {}
+    proxyTable: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true
+      }
+    }
   }
 }
 
