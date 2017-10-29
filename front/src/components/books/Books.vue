@@ -1,17 +1,22 @@
 <template>
   <div class="layout-padding">
+    <div class="q-if text-right">
+      <register-modal/>
+    </div>
     <q-data-table
-      :data="table"
+      :data="books"
       :config="config"
+      :columns="columns"
       @refresh="refresh"
       @selection="selection"
-   >
+      @rowclick="rowClick"
+    >
       <template slot="col-title" scope="cell">
         <span class="light-paragraph">{{cell.data}}</span>
       </template>
 
       <template slot="col-link" scope="cell">
-        <q-btn v-if="cell.data.match(/www.amazon.co.jp/)" color="orange-6" small>
+        <q-btn outline v-if="cell.data.match(/www.amazon.co.jp/)" color="orange-6" small>
           Amazon
         </q-btn>
       </template>
@@ -34,9 +39,11 @@
     QCollapsible,
     clone
   } from 'quasar'
-  import table from 'data/table.json'
+//  import table from 'data/table.json'
+  import RegisterModal from './RegisterModal.vue'
   export default {
     components: {
+      RegisterModal,
       QDataTable,
       QField,
       QInput,
@@ -69,6 +76,12 @@
       },
       rowClick (row) {
         console.log('clicked on a row', row)
+      },
+      getBooks () {
+        this.$http.axios.get('/api/books')
+          .then(function (response) {
+            this.books = response.data.data.results
+          })
       }
     },
     beforeDestroy () {
@@ -76,7 +89,7 @@
     },
     data () {
       return {
-        table,
+        books: [],
         config: {
           title: 'Books',
           refresh: true,
@@ -122,6 +135,9 @@
         bodyHeightProp: 'maxHeight',
         bodyHeight: 500
       }
+    },
+    mounted () {
+      this.getBooks()
     },
     watch: {
       pagination (value) {
