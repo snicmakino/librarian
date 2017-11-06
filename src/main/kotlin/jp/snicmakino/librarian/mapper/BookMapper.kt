@@ -10,7 +10,7 @@ interface BookMapper {
         SELECT
             *
         FROM
-            book
+            books
     """)
     fun all(): MutableList<Book>
 
@@ -22,7 +22,7 @@ interface BookMapper {
             ,i10.isbn AS isbn10
             ,i13.isbn AS isbn13
         FROM
-            book b
+            books b
             LEFT OUTER JOIN
                 isbn10 i10
             ON  b.id = i10.book_id
@@ -38,7 +38,7 @@ interface BookMapper {
     fun find(id: Int): Book
 
     @Insert("""
-        INSERT INTO book
+        INSERT INTO books
             (title, stock)
         VALUES
             (#{title}, #{stock})
@@ -56,7 +56,7 @@ interface BookMapper {
 
     @Update("""
         <script>
-            UPDATE book
+            UPDATE books
             <set>
                 <if test="title != null">title = #{title},</if>
                 <if test="stock != null">stock = #{stock},</if>
@@ -89,7 +89,7 @@ interface BookMapper {
     fun updateIsbn13(book: Book)
 
     @Delete("""
-        DELETE FROM book WHERE id = #{id}
+        DELETE FROM books WHERE id = #{id}
     """)
     fun delete(id: Int): Boolean
 }

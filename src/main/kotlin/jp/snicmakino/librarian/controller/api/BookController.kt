@@ -1,4 +1,4 @@
-package jp.snicmakino.librarian.controller
+package jp.snicmakino.librarian.controller.api
 
 import jp.snicmakino.librarian.mapper.BookMapper
 import jp.snicmakino.librarian.model.Book
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/api/books")
 class BookController(val bookMapper: BookMapper) {
 
     @GetMapping

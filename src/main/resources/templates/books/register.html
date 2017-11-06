@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title>Librarian | Book List</title>
+</head>
+
+<body class="nav-md">
+
+<!-- page content -->
+<div layout:fragment="content" class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Book</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Register</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br/>
+                        <form id="demo-form" data-parsley-validate class="form-horizontal form-label-left">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Auto Input</label>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control"
+                                               placeholder="Amazon url or isbn10">
+                                        <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary">Search!</button>
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="ln_solid"></div>
+                        <form id="form" data-parsley-validate class="form-horizontal form-label-left">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="title" required="required" class="form-control"
+                                           placeholder="input the book title">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="stock">Stock <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-2 col-sm-2 col-xs-5">
+                                    <input id="stock" class="form-control" type="number" name="middle-name" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn10">Isbn10</label>
+                                <div class="col-md-3 col-sm-3 col-xs-9">
+                                    <input id="isbn10" class="form-control" type="text" name="middle-name"
+                                           placeholder="xxxxxxxxxx">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn13">Isbn13</label>
+                                <div class="col-md-3 col-sm-3 col-xs-9">
+                                    <input id="isbn13" class="form-control" type="text" name="middle-name"
+                                           placeholder="xxx-xxxxxxxxxx">
+                                </div>
+                            </div>
+                            <div class="form-group mt-4">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" style="margin-top: 10px;">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /page content -->
+
+</body>
+</html>

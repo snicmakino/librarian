@@ -11,11 +11,6 @@ class RootController(val bookMapper: BookMapper) {
 
     @GetMapping
     fun index(): String {
-        return "index"
-    }
-
-    @GetMapping("plain_page")
-    fun plainPage(): String {
-        return "plain_page"
+        return "redirect:books"
     }
 }
