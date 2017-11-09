@@ -34,6 +34,7 @@ repositories {
 	mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
+	maven { url "http://jcenter.bintray.com"}
 }
 
 dependencies {
@@ -45,6 +46,7 @@ dependencies {
 	compile('org.flywaydb:flyway-core')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+	compile("khttp:khttp:0.1.0")
 
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('org.postgresql:postgresql')

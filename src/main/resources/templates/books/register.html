@@ -99,12 +99,13 @@
             $('#search').on('click', function(){
                 // Ajax通信を開始
                 $.ajax({
-                    url: 'https://www.amazon.co.jp/dp/4797327030',
+                    url: '/api/amazon/search?value=https://www.amazon.co.jp/dp/4797327030',
                     type: 'GET',
                     timeout: 5000,
                     success: function(data){
                         // 通信成功時の処理を記述
-                        $('#title').val("title");
+                        var result = $($.parseHTML(data));
+                        $('#title').val(result.find('#productTitle').text());
                         $('#isbn10').val("isbn10");
                         $('#isbn13').val("isbn13");
                     },
