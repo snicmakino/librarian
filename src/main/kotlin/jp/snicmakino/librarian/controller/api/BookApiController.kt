@@ -8,7 +8,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api/books")
-class BookController(val bookMapper: BookMapper) {
+class BookApiController(val bookMapper: BookMapper) {
 
     @GetMapping
     fun index(): MutableList<Book> {
@@ -24,8 +24,8 @@ class BookController(val bookMapper: BookMapper) {
     @Transactional
     fun store(@RequestBody @Valid book: Book): Book {
         bookMapper.register(book)
-        if (book.isbn10.isbn != null) { bookMapper.registerIsbn10(book) }
-        if (book.isbn13.isbn != null) { bookMapper.registerIsbn13(book) }
+        if (book.isbn10.value != null) { bookMapper.registerIsbn10(book) }
+        if (book.isbn13.value != null) { bookMapper.registerIsbn13(book) }
         return book
     }
 
@@ -34,8 +34,8 @@ class BookController(val bookMapper: BookMapper) {
     fun update(@PathVariable("id") id: Int, @RequestBody @Valid book: Book): Book {
         book.id = id
         bookMapper.update(book)
-        if (book.isbn10.isbn != null) { bookMapper.updateIsbn10(book) }
-        if (book.isbn13.isbn != null) { bookMapper.updateIsbn13(book) }
+        if (book.isbn10.value != null) { bookMapper.updateIsbn10(book) }
+        if (book.isbn13.value != null) { bookMapper.updateIsbn13(book) }
         return bookMapper.find(id)
     }
 

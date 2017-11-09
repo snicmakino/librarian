@@ -5,6 +5,6 @@ import org.hibernate.validator.constraints.Length
 
 class Isbn13 {
     @JsonProperty("isbn13")
-    var isbn: String? = null
+    var value: String? = null
 }
 

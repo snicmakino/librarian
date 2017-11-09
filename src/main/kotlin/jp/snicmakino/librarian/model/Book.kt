@@ -1,7 +1,7 @@
 package jp.snicmakino.librarian.model
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped
-import org.hibernate.validator.constraints.NotEmpty
+import javax.validation.constraints.NotEmpty
 import javax.validation.Valid
 import javax.validation.constraints.Max
 import javax.validation.constraints.Min

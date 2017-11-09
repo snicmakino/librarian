@@ -36,22 +36,22 @@
                                         <input type="text" class="form-control"
                                                placeholder="Amazon url or isbn10">
                                         <span class="input-group-btn">
-                                    <button type="button" class="btn btn-primary">Search!</button>
+                                    <button type="button" class="btn btn-primary" id="search">Search!</button>
                                 </span>
                                     </div>
                                 </div>
                             </div>
                         </form>
                         <div class="ln_solid"></div>
-                        <form id="form" data-parsley-validate class="form-horizontal form-label-left">
-
+                        <form id="form" data-parsley-validate class="form-horizontal form-label-left"
+                              th:action="@{/books}" th:object="${book}" method="post">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title <span
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="title" required="required" class="form-control"
-                                           placeholder="input the book title">
+                                           placeholder="input the book title" th:field="*{title}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -59,21 +59,22 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-2 col-sm-2 col-xs-5">
-                                    <input id="stock" class="form-control" type="number" name="middle-name" value="0">
+                                    <input id="stock" class="form-control" type="number" name="middle-name" value="0"
+                                           th:field="*{stock}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn10">Isbn10</label>
                                 <div class="col-md-3 col-sm-3 col-xs-9">
                                     <input id="isbn10" class="form-control" type="text" name="middle-name"
-                                           placeholder="xxxxxxxxxx">
+                                           placeholder="xxxxxxxxxx" th:field="*{isbn10.value}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn13">Isbn13</label>
                                 <div class="col-md-3 col-sm-3 col-xs-9">
                                     <input id="isbn13" class="form-control" type="text" name="middle-name"
-                                           placeholder="xxx-xxxxxxxxxx">
+                                           placeholder="xxx-xxxxxxxxxx" th:field="*{isbn13.value}">
                                 </div>
                             </div>
                             <div class="form-group mt-4">
@@ -91,6 +92,29 @@
     </div>
 </div>
 <!-- /page content -->
-
+<div layout:fragment="scripts">
+    <!-- content1 page scripts -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#search').on('click', function(){
+                // Ajax通信を開始
+                $.ajax({
+                    url: 'https://www.amazon.co.jp/dp/4797327030',
+                    type: 'GET',
+                    timeout: 5000,
+                    success: function(data){
+                        // 通信成功時の処理を記述
+                        $('#title').val("title");
+                        $('#isbn10').val("isbn10");
+                        $('#isbn13').val("isbn13");
+                    },
+                    error: function(){
+                        // 通信失敗時の処理を記述
+                    }
+                })
+            })
+        });
+    </script>
+</div>
 </body>
 </html>
