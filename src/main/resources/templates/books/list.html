@@ -61,16 +61,72 @@
                                 <td th:text="${book.isbn10.value}">0000000000</td>
                                 <td th:text="${book.isbn13.value}">000-0000000000</td>
                                 <td>
-                                    <button class="btn btn-default" data-toggle="modal" data-target="#modal-example"><i
-                                            class="fa fa-edit"></i></button>
                                     <button class="btn btn-default" data-toggle="modal" th:data-book-id="${book.id}"
+                                            data-target="#modal-update-book"><i
+                                            class="fa fa-edit"></i></button>
+                                    <button class="btn btn-default" data-toggle="modal" th:data-book-id="${book.id}" th:data-book-title="${book.title}"
                                             data-target="#modal-delete-book"><i
                                             class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="modal" id="modal-delete-book" tabindex="-1">
+
+                        <div class="modal fade" id="modal-update-book" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title">Update</h4>
+                                    </div>
+                                    <form id="update-form" data-parsley-validate class="form-horizontal form-label-left"
+                                          method="post">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title
+                                                    <span
+                                                            class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="title" class="form-control" type="text" name="title" required="required"
+                                                           placeholder="input the book title">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="stock">Stock
+                                                    <span
+                                                            class="required">*</span>
+                                                </label>
+                                                <div class="col-md-2 col-sm-2 col-xs-5">
+                                                    <input id="stock" class="form-control" type="number" name="stock" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn10">Isbn10</label>
+                                                <div class="col-md-3 col-sm-3 col-xs-9">
+                                                    <input id="isbn10" class="form-control" type="text" name="isbn10.value" placeholder="xxxxxxxxxx">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn13">Isbn13</label>
+                                                <div class="col-md-3 col-sm-3 col-xs-9">
+                                                    <input id="isbn13" class="form-control" type="text" name="isbn13.value" placeholder="xxx-xxxxxxxxxx">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="modal-delete-book" tabindex="-1">
                             <div class="modal-dialog modal-sm">
 
                                 <div class="modal-content">
@@ -78,11 +134,11 @@
                                         <button type="button" class="close" data-dismiss="modal">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <h4 class="modal-title" id="modal-label">Confirm</h4>
+                                        <h4 class="modal-title">Delete confirm</h4>
                                     </div>
                                     <form id="delete-form" method="post">
                                         <div class="modal-body">
-                                            Are you sure you want to delete ?
+                                            Are you sure you want to delete?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close
@@ -105,11 +161,34 @@
     <!-- content1 page scripts -->
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#modal-delete-book').on('show.bs.modal', function (event) {
+            $('#modal-update-book').on('show.bs.modal', function (event) {
+                var modal = $(this);
                 let bookId = $(event.relatedTarget).data('book-id');
 
-                $(this).find('#delete-form').attr('action', '/books/delete/' + bookId);
-            })
+                $.ajax({
+                    url: '/api/books/' + bookId,
+                    type: 'GET',
+                    timeout: 5000,
+                    success: function (data) {
+                        // 通信成功時の処理を記述
+                        modal.find('#title').val(data['title']);
+                        modal.find('#stock').val(data['stock']);
+                        modal.find('#isbn10').val(data['isbn10']);
+                        modal.find('#isbn13').val(data['isbn13']);
+                    },
+                    error: function () {
+                        // 通信失敗時の処理を記述
+                    }
+                });
+                modal.find('#update-form').attr('action', '/books/update/' + bookId);
+            });
+            $('#modal-delete-book').on('show.bs.modal', function (event) {
+                var modal = $(this);
+                let bookId = $(event.relatedTarget).data('book-id');
+
+                console.log(modal.find('.modal-body').text());
+                modal.find('#delete-form').attr('action', '/books/delete/' + bookId);
+            });
         });
     </script>
 </div>
