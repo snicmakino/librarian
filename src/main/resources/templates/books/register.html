@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{fragments/layout}">
 <head>
-    <title>Librarian | Book List</title>
+    <title>Librarian | Book Register</title>
 </head>
 
 <body class="nav-md">
@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control"
+                                        <input type="text" id="book-search" class="form-control"
                                                placeholder="Amazon url or isbn10">
                                         <span class="input-group-btn">
                                     <button type="button" class="btn btn-primary" id="search">Search!</button>
@@ -59,7 +59,7 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-2 col-sm-2 col-xs-5">
-                                    <input id="stock" class="form-control" type="number" name="middle-name" value="0"
+                                    <input id="stock" class="form-control" type="number" name="middle-name" value="1"
                                            th:field="*{stock}">
                                 </div>
                             </div>
@@ -97,17 +97,18 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('#search').on('click', function(){
+                console.log($('#book-search').val());
                 // Ajax通信を開始
                 $.ajax({
-                    url: '/api/amazon/search?value=https://www.amazon.co.jp/dp/4797327030',
+                    url: '/api/amazon/search?value=' + $('#book-search').val(),
                     type: 'GET',
                     timeout: 5000,
                     success: function(data){
                         // 通信成功時の処理を記述
                         var result = $($.parseHTML(data));
                         $('#title').val(result.find('#productTitle').text());
-                        $('#isbn10').val("isbn10");
-                        $('#isbn13').val("isbn13");
+                        $('#isbn10').val($.trim(result.find('b:contains(ISBN-10:)').parent().text().replace('ISBN-10:', '')));
+                        $('#isbn13').val($.trim(result.find('b:contains(ISBN-13:)').parent().text().replace('ISBN-13:', '')));
                     },
                     error: function(){
                         // 通信失敗時の処理を記述

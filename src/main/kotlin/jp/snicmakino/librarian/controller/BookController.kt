@@ -4,10 +4,7 @@ import jp.snicmakino.librarian.mapper.BookMapper
 import jp.snicmakino.librarian.model.Book
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.ModelAttribute
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @Controller
@@ -39,6 +36,12 @@ class BookController(val bookMapper: BookMapper) {
         if (book.isbn13.value != null) {
             bookMapper.registerIsbn13(book)
         }
+        return "redirect:/books"
+    }
+
+    @PostMapping("delete/{id}")
+    fun delete(@PathVariable("id") id: Int): String {
+        bookMapper.delete(id).toString()
         return "redirect:/books"
     }
 }

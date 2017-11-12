@@ -21,6 +21,7 @@ interface BookMapper {
             LEFT OUTER JOIN
                 isbn13 i13
             ON  b.id = i13.book_id
+        ORDER BY id DESC
     """)
     @Results(
             Result(property = "isbn13.value", column = "isbn13"),

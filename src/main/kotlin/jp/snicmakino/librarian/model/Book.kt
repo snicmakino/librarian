@@ -14,7 +14,7 @@ class Book {
 
     @Min(0)
     @Max(9999)
-    var stock: Int? = null
+    var stock: Int? = 1
 
     @JsonUnwrapped
     @Valid
